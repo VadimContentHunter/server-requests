@@ -1,4 +1,4 @@
-import { ServerRequestsError } from './ServerRequestsError';
+import { ServerRequestsError } from './ServerRequestsError.js';
 
 export class ServerRequestsErrorInterface extends ServerRequestsError {
     constructor(message) {

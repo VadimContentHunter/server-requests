@@ -5,7 +5,7 @@ export class ServerRequests {
     #events = [];
 
     constructor() {
-        console.log('ServerRequests connected!');
+        // console.log('ServerRequests connected!');
     }
 
     get events() {
@@ -26,7 +26,7 @@ export class ServerRequests {
         document.addEventListener(eventName, requestEvent);
         this.#events.push(eventName);
 
-        console.log('ServerRequests: событие[' + eventName + '] зарегистрировано!');
+        // console.log('ServerRequests: событие[' + eventName + '] зарегистрировано!');
         return this;
     }
 

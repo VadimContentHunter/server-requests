@@ -15,7 +15,7 @@ allForms.forEach((form) => {
                     formElem: form,
                     method: 'POST',
                     requestDataPacker: (valueObject) => {
-                        console.log(valueObject);
+                        // console.log(valueObject);
                         return valueObject;
                     },
                     responseHandler: (valueJson) => {

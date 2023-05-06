@@ -21,7 +21,7 @@ module.exports = {
             'error',
             {
                 vars: 'local',
-                argsIgnorePattern: '^event$', // regex для игнорирования аргументов функций
+                argsIgnorePattern: '^(event|error)$', // regex для игнорирования аргументов функций
             },
         ],
         'class-methods-use-this': [

@@ -6,7 +6,7 @@ export class RequestForms extends RequestEvent {
 
     constructor() {
         super();
-        console.log('Обработчик RequestForms - создан.');
+        // console.log('Обработчик RequestForms - создан.');
     }
 
     set formElem(value) {
@@ -34,7 +34,7 @@ export class RequestForms extends RequestEvent {
      * @param {function(string)} requestParameters.responseHandler  CallBack функция, которая принимает ответ в виде строки.
      */
     handleEvent(event) {
-        console.log('RequestForms.handleEvent(event).');
+        // console.log('RequestForms.handleEvent(event).');
 
         this.formElem = event?.detail?.formElem ?? null;
         this.url = typeof event?.detail?.url === 'string' ? typeof event.detail.url : this.getUrlForm();
@@ -67,16 +67,16 @@ export class RequestForms extends RequestEvent {
     }
 
     async request() {
-        const response = await fetch(this.url, {
+        await fetch(this.url, {
             method: this.method,
             body: this.params,
-        });
-
-        let jsonData = await response.json();
-        if (typeof jsonData !== 'string') {
-            throw new ServerRequestsError('Не удалось преобразовать ответ в json!');
-        }
-
-        this.responseHandler(jsonData);
+        })
+            .then((response) => response.json())
+            .then((jsonData) => {
+                this.responseHandler(jsonData);
+            })
+            .catch((error) => {
+                throw new ServerRequestsError('Не удалось преобразовать ответ в json!');
+            });
     }
 }
