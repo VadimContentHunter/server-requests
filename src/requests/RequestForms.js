@@ -38,7 +38,7 @@ export class RequestForms extends RequestEvent {
 
         this.formElem = event?.detail?.formElem ?? null;
         this.url = typeof event?.detail?.url === 'string' ? typeof event.detail.url : this.getUrlForm();
-        this.method = typeof event?.detail?.method === 'string' ? typeof event.detail.method : this.getMethodForm();
+        this.method = typeof event?.detail?.method === 'string' ? event.detail.method : this.getMethodForm();
         this.requestDataPacker = event?.detail?.requestDataPacker ?? null;
         this.responseHandler = event?.detail?.responseHandler ?? null;
 

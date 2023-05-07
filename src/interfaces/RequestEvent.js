@@ -51,15 +51,15 @@ export class RequestEvent {
     }
 
     set params(value) {
-        if (typeof value !== 'object') {
-            throw new ServerRequestsErrorInterface('Значение value для params не является объектом.');
+        if (typeof value !== 'object' && typeof value !== 'string') {
+            throw new ServerRequestsErrorInterface('Значение value для params не является объектом или строкой.');
         }
         this.#params = value;
     }
 
     get params() {
-        if (typeof this.#params !== 'object') {
-            throw new ServerRequestsErrorInterface('Поле params не является объектом.');
+        if (typeof this.#params !== 'object' && typeof this.#params !== 'string') {
+            throw new ServerRequestsErrorInterface('Поле params не является объектом или строкой.');
         }
         return this.#params;
     }
