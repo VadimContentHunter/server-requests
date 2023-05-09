@@ -37,7 +37,7 @@ export class RequestForms extends RequestEvent {
         // console.log('RequestForms.handleEvent(event).');
 
         this.formElem = event?.detail?.formElem ?? null;
-        this.url = typeof event?.detail?.url === 'string' ? typeof event.detail.url : this.getUrlForm();
+        this.url = typeof event?.detail?.url === 'string' ? event.detail.url : this.getUrlForm();
         this.method = typeof event?.detail?.method === 'string' ? event.detail.method : this.getMethodForm();
         this.requestDataPacker = event?.detail?.requestDataPacker ?? null;
         this.responseHandler = event?.detail?.responseHandler ?? null;
