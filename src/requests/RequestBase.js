@@ -44,10 +44,10 @@ export class RequestBase extends RequestEvent {
             this.method = event.detail.method;
         }
 
-        this.objectForDataPacker = event.detail.objectForDataPacker;
-        this.requestDataPacker = event?.detail?.requestDataPacker ?? null;
-        this.responseHandler = event?.detail?.responseHandler ?? null;
+        this.objectForDataPacker = event.detail.objectForDataPacker ?? null;
+        this.requestDataPacker = event?.detail?.requestDataPacker ?? this.requestDataPacker;
 
+        this.responseHandler = event?.detail?.responseHandler ?? null;
         this.params = this.requestDataPacker(this.objectForDataPacker);
         this.request();
     }

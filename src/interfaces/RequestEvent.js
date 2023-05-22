@@ -3,7 +3,7 @@ import { ServerRequestsErrorInterface } from '../errors/ServerRequestsErrorInter
 export class RequestEvent {
     #url;
     #method = 'POST';
-    #params = {};
+    #params = null;
     #requestDataPacker;
     #responseHandler;
 
@@ -15,6 +15,10 @@ export class RequestEvent {
                 throw error;
             }
         }
+
+        this.#requestDataPacker = () => {
+            return null;
+        };
     }
 
     // interface
@@ -51,15 +55,17 @@ export class RequestEvent {
     }
 
     set params(value) {
-        if (typeof value !== 'object' && typeof value !== 'string') {
-            throw new ServerRequestsErrorInterface('Значение value для params не является объектом или строкой.');
+        if (typeof value !== 'object' && typeof value !== 'string' && value !== null) {
+            throw new ServerRequestsErrorInterface(
+                'Значение value для params не является объектом или строкой или null.',
+            );
         }
         this.#params = value;
     }
 
     get params() {
-        if (typeof this.#params !== 'object' && typeof this.#params !== 'string') {
-            throw new ServerRequestsErrorInterface('Поле params не является объектом или строкой.');
+        if (typeof this.#params !== 'object' && typeof this.#params !== 'string' && this.#params !== null) {
+            throw new ServerRequestsErrorInterface('Поле params не является объектом или строкой или null.');
         }
         return this.#params;
     }

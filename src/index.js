@@ -15,11 +15,11 @@ allForms.forEach((form) => {
             button.addEventListener('click', (event) => {
                 serverRequest.request('eventFetchRequestForm', {
                     formElem: form,
-                    method: 'POST',
-                    requestDataPacker: (valueObject) => {
-                        // console.log(valueObject);
-                        return valueObject;
-                    },
+                    method: 'GET',
+                    // requestDataPacker: (valueObject) => {
+                    //     // console.log(valueObject);
+                    //     return valueObject;
+                    // },
                     responseHandler: (valueJson) => {
                         console.log(valueJson);
                     },
@@ -30,17 +30,17 @@ allForms.forEach((form) => {
 });
 
 serverRequest.request('eventFetchRequestBase', {
-    url: '/test/1',
+    url: 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits',
     method: 'GET',
     objectForDataPacker: {
         test_id: '001',
         title: 'test title',
     },
-    requestDataPacker: (valueObject) => {
-        console.log('requestDataPacker: ');
-        console.log(valueObject);
-        return valueObject;
-    },
+    // requestDataPacker: (valueObject) => {
+    //     console.log('requestDataPacker: ');
+    //     console.log(valueObject);
+    //     return valueObject;
+    // },
     responseHandler: (valueJson) => {
         console.log('responseHandler: ');
         console.log(valueJson);
