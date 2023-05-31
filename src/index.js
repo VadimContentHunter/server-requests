@@ -5,7 +5,10 @@ import { RequestForms } from './requests/RequestForms.js';
 const serverRequest = new ServerRequests();
 serverRequest.eventRegistration('eventFetchRequestForm', new RequestForms());
 serverRequest.eventRegistration('eventFetchRequestBase', new RequestBase());
+serverRequest.eventRegistration('eventFetchRequestForm', new RequestForms());
 // serverRequest.request('eventFetchRequestForm');
+
+console.log(serverRequest.hasEvent('eventFetchRequestForm'));
 
 const allForms = document.querySelectorAll('form');
 allForms.forEach((form) => {

@@ -23,11 +23,22 @@ export class ServerRequests {
             throw new ServerRequestsError('Параметр requestEvent должен наследоваться от класса RequestEvent.');
         }
 
-        document.addEventListener(eventName, requestEvent);
-        this.#events.push(eventName);
+        if (!this.hasEvent(eventName)) {
+            document.addEventListener(eventName, requestEvent);
+            this.#events.push(eventName);
+        }
 
         // console.log('ServerRequests: событие[' + eventName + '] зарегистрировано!');
         return this;
+    }
+
+    hasEvent(eventSought) {
+        return this.events.some((eventName) => {
+            if (eventName === eventSought) {
+                return true;
+            }
+            return false;
+        });
     }
 
     /**
